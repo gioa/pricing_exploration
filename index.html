@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel='stylesheet' id='databricks-css-bootstrap-css'  href='https://databricks.com/wp-content/themes/databricks/assets/vendor/bootstrap/css/bootstrap.min.css?ver=2.69' type='text/css' media='all' />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+        <style>
+            body {
+                background-color: white;
+                /*width: 915px;*/
+                width: 715px;
+                font-family:"Source Sans Pro",Helvetica,Arial,sans-serif;
+                color: #444; 
+                line-height: 1.428;
+            }
+            .plan-box{          
+                font-weight: 300;
+                font-size: 14px;
+                margin: 5px;
+                background-color: #eee;
+            }
+            .plan-title{
+                margin:0;
+                font-size: 22px;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .nopadding {
+               padding: 0 !important;
+               margin: 0 !important;
+            }
+
+            .plan-details{
+                background-color: #FAFAFA;
+                height: 240px;
+                padding: 10px;
+                font-size: 13px;
+                font-weight: normal;
+            }
+
+            .plan-details .features li:before {
+                content: "•";
+                position: absolute;
+                top: .2em;
+                left: 0;
+                color: #CFCFCF;
+            }
+
+            .plan-box.tier-starter .plan-details .features li:before,
+            .plan-box.tier-professional .plan-details .features li:before,
+            .plan-box.tier-enterprise .plan-details .features li:before
+            {
+                content: "+";
+                top: .25em;
+            }
+            .plan-box.tier-professional .plan-details .features li:before{
+                /*color: #2093a0;*/
+                color: #10b36b;
+            }
+            .plan-box.tier-enterprise .plan-details .features li:before{
+                /*color: #10b36b;*/
+                color: #2093a0;
+            }
+            .plan-box.tier-starter .plan-details .features li:before{
+                color: #F07636;
+            }
+                            
+
+            .plan-box .plan-details .users{
+                font-weight: bold;
+                line-height: 16px;
+                margin-bottom: 10px;
+                text-transform: uppercase;
+            }
+
+            .plan-box .plan-details .includes{
+                border-top: 1px solid rgba(222,222,222,0.5);
+                padding-top: 10px;
+                color: #929292;
+                margin-bottom: 10px;
+            }
+
+
+            .plan-box .plan-details .features{
+                margin: -0.2em 0;
+                padding-left: 0;
+                list-style: none;
+            }
+
+             .plan-box .plan-details .features li{
+                padding-left: 10px;
+                padding-top: .2em;
+                padding-bottom: .2em;
+                position: relative;
+            }
+            .plan-box .pricing .pricing-detail {
+                text-align: center;
+            }
+
+            .plan-box .pricing .pricing-detail .number {
+                display: block;
+                font-family: Newslab,Times New Roman,serif;
+                font-weight: 300;
+                font-size: 32px;
+                line-height: 1.25em;
+                margin-bottom: -0.25em;
+                /*color: #333;*/
+                color: white;
+            }
+
+            .plan-box .pricing .pricing-detail .number:before {
+                content: "$";
+                font-size: .7em;
+                display: inline-block;
+                position: relative;
+                top: -0.25em;
+            }
+
+            .tier-community .pricing .pricing-detail .number{
+                color: #929292;
+
+            }
+            .tier-community .pricing .pricing-detail .message{
+                color:#797979;
+            }
+
+            .tier-community .plan-footer {
+                /*display:table;
+                */
+                text-align: center;
+            }
+            /*.tier-community .pricing,*/
+            .tier-community .pricing .pricing-detail {
+                /*display: table-cell;
+                vertical-align: middle;*/
+                position: absolute;
+                top: 30%;
+                left:0;
+                right:0;
+                margin-left:auto;
+                margin-right:auto;
+
+
+            }
+
+
+            /*.plan-box .pricing .pricing-detail .message,*/
+            .tier-enterprise  .pricing .pricing-detail .message,
+            .tier-professional  .pricing .pricing-detail .message,
+            .tier-starter  .pricing .pricing-detail .message {
+                display: block;
+                color: #929292;
+                line-height: 1.3em;
+                margin-bottom: 4px;
+                color: #f5f5f5;
+            }
+
+            .tier-enterprise {
+                /*background-color: #2093a0;*/
+                background-image: url('https://accounts.cloud.databricks.com/img/professional_plan_bg.jpg');
+                background-size: cover;
+            }
+
+            .tier-professional {
+                /*background-color: #10b36b;*/
+                background-image: url('https://accounts.cloud.databricks.com/img/enterprise_plan_bg.jpg');
+                background-size: cover;
+            }
+            /*
+            .tier-professional {
+                background-color: #2093a0;
+                background-image: url('https://accounts.cloud.databricks.com/img/professional_plan_bg.jpg');
+                background-size: cover;
+            }
+
+            .tier-enterprise {
+                background-color: #10b36b;
+                background-image: url('https://accounts.cloud.databricks.com/img/enterprise_plan_bg.jpg');
+                background-size: cover;
+            }*/
+            .tier-starter{
+                background-color: #F07636;
+                background-image: url('orange.jpg');
+                background-size: cover;
+            }
+
+            .tier-starter .plan-title,
+            .tier-professional .plan-title,
+            .tier-enterprise .plan-title,
+            .tier-starter .plan-box-btn,
+            .tier-professional .plan-box-btn,
+            .tier-enterprise .plan-box-btn{
+                color: white;
+            }
+
+            fieldset{
+                border: none;
+                border-top: 1px solid #ccc;
+                text-align: center;
+            }
+            fieldset legend{
+                 margin: 0 auto;
+                 border-bottom: 0px;
+                 width: auto;
+            }
+            fieldset .fa{
+                color: white;
+                padding: 0 10px;
+                margin: 0 auto;
+            }
+
+            .plan-footer{
+                padding: 15px;
+                font-weight: 300;
+                font-size: 14px;
+                height:225px; 
+                position: relative;
+            }
+
+            .plan-footer .plan-box-btn{
+                position: absolute;
+                bottom: 25px;
+                left: 25px;
+                right:25px;
+                display: block;
+                padding: 4px;
+                font-size: 13px;
+                font-weight: normal;
+                line-height: 18px;
+                background-color: transparent;
+                border: solid 1px;
+                text-align: center;
+                height: auto;
+                text-transform: uppercase;
+                border-radius: 4px;
+            }
+
+            .tier-community .plan-box-btn{
+                color: #1cb1c2;
+            }
+            .tier-community .plan-box-btn:hover{
+                background-color: #1cb1c2;
+                color: #fff;
+                text-decoration: none;
+
+            }
+            .tier-starter .plan-box-btn:hover{
+                background-color: white;
+                color: #F07636;
+                text-decoration: none;
+
+            }
+
+            .tier-professional .plan-box-btn:hover{
+                background-color: white;
+                color: #10b36b;
+                text-decoration: none;
+              
+            }
+
+            .tier-enterprise .plan-box-btn:hover{
+                background-color: white;
+                color: #2093a0;
+                text-decoration: none;
+
+            }
+
+
+        </style>
+    </head>
+    <body >
+         <div class="plan-boxes row nopadding" data-reactid=".1.1">
+            <div class="col-sm-3 nopadding">
+                <div class="plan-box tier-community" data-name="plan-tier-community" data-reactid=".1.1.2">
+                    <div class="plan-title" data-reactid=".1.1.2.0">Community</div>
+                    <div class="plan-details" data-reactid=".1.1.2.1">
+                        <div class="users" data-reactid=".1.1.2.1.0">Up to 3 users</div>
+                        <div class="includes" data-reactid=".1.1.2.1.1">
+                            <span data-reactid=".1.1.2.1.1.0">Community includes: </span>
+                        </div>
+                        <ul class="features" data-reactid=".1.1.2.1.2">
+                            <li class="plan-feature" data-reactid=".1.1.2.1.2.$Premium support">6 GB Cluster</li>
+                            <li class="plan-feature" data-reactid=".1.1.0.1.2.$SQL, Python, Scala and R&nbsp;notebooks">SQL, Python, Scala and R&nbsp;notebooks</li>
+                            <li class="plan-feature" data-reactid=".1.1.2.1.2.$Operational SLAs">Forum support</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer" data-reactid=".1.1.2.2">
+                        <div class="pricing" data-reactid=".1.1.0.2.0">
+                            <div class="pricing-detail" data-reactid=".1.1.0.2.0.0">
+                                <span class="number" data-reactid=".1.1.0.2.0.0.0">0</span>
+                                 <span class="message" data-reactid=".1.1.0.2.0.0.1">No credit card needed</span>
+                                <!-- <span class="number" data-reactid=".1.1.0.2.0.0.0">FREE</span> -->
+                            </div>
+                        </div>
+                        <div class="buttons" data-reactid=".1.1.2.2.1">
+                            <div class="plan-upgrade-btn" data-name="contact-us-button" data-reactid=".1.1.2.2.1.0"><a class="flat-btn plan-box-btn " data-reactid=".1.1.2.2.1.0.0">sign up</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 nopadding">
+                <div class="plan-box tier-starter tier-starter-v2 tier-selected" data-name="plan-tier-starter-v2" data-reactid=".1.1.0">
+                    <div class="plan-title" data-reactid=".1.1.0.0">Starter</div>
+                    <div class="plan-details" data-reactid=".1.1.0.1">
+                        <div class="users" data-reactid=".1.1.0.1.0">Up to 3 users</div>
+                      <!--   <div class="includes" data-reactid=".1.1.0.1.1"><span data-reactid=".1.1.0.1.1.0">Starter</span><span data-reactid=".1.1.0.1.1.1"> includes:</span></div> -->
+                       <div class="includes" data-reactid=".1.1.1.1.1"><span data-reactid=".1.1.1.1.1.0">Includes all in </span><strong data-reactid=".1.1.1.1.1.1">Community</strong><span data-reactid=".1.1.1.1.1.2">, and:</span></div>
+                        <ul class="features" data-reactid=".1.1.0.1.2">
+                            <li class="plan-feature" data-reactid=".1.1.0.1.2.$Unlimited clusters">Unlimited clusters</li>
+                          <!--   <li class="plan-feature" data-reactid=".1.1.0.1.2.$SQL, Python, Scala and R&nbsp;notebooks">SQL, Python, Scala and R&nbsp;notebooks</li> -->
+                            <li class="plan-feature" data-reactid=".1.1.0.1.2.$REST API">REST API</li>
+                            <li class="plan-feature" data-reactid=".1.1.0.1.2.$Latest Spark version">Latest Spark version</li>
+                            <li class="plan-feature" data-reactid=".1.1.0.1.2.$IDE integration">IDE integration</li>
+                            <!-- <li class="plan-feature" data-reactid=".1.1.0.1.2.$Forum support">Forum support</li> -->
+                        </ul>
+                    </div>
+                    <div class="plan-footer" data-reactid=".1.1.0.2">
+                        <div class="pricing" data-reactid=".1.1.0.2.0">
+                            <div class="pricing-detail" data-reactid=".1.1.0.2.0.0">
+                                <span class="number" data-reactid=".1.1.0.2.0.0.0">99</span>
+                                <span class="message" data-reactid=".1.1.0.2.0.0.1">per month</span></div>
+                                <div class="pricing-divider" data-reactid=".1.1.0.2.0.1">
+                                   <!--  <img src="/img/pricing_divider.svg" width="148" height="24" alt="or" data-reactid=".1.1.0.2.0.1.0"> -->
+                                   <fieldset>
+                                        <legend><i class="fa fa-plus-circle"></i></legend>
+                                   </fieldset>
+                               
+                                </div>
+                            <div class="pricing-detail" data-reactid=".1.1.0.2.0.2"><span class="number" data-reactid=".1.1.0.2.0.2.0">0.40</span><span class="message" data-reactid=".1.1.0.2.0.2.1">per hour per node</span>
+                            </div>
+                        </div>
+
+                        <div class="buttons" data-reactid=".1.1.2.2.1">
+                            <div class="plan-upgrade-btn" data-name="contact-us-button" data-reactid=".1.1.2.2.1.0">
+                                <a class="flat-btn plan-box-btn " data-reactid=".1.1.2.2.1.0.0">14 Day Trial</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 nopadding">
+                <div class="plan-box tier-professional" data-name="plan-tier-professional" data-reactid=".1.1.1">
+                    <div class="plan-title" data-reactid=".1.1.1.0">Professional</div>
+                    <div class="plan-details" data-reactid=".1.1.1.1">
+                        <div class="users" data-reactid=".1.1.1.1.0">Up to 15 users</div>
+                        <div class="includes" data-reactid=".1.1.1.1.1"><span data-reactid=".1.1.1.1.1.0">Includes all in </span><strong data-reactid=".1.1.1.1.1.1">Starter</strong><span data-reactid=".1.1.1.1.1.2">, and:</span></div>
+                        <ul class="features" data-reactid=".1.1.1.1.2">
+                            <li class="plan-feature" data-reactid=".1.1.1.1.2.$Multiple Spark versions">Multiple Spark versions</li>
+                            <li class="plan-feature" data-reactid=".1.1.1.1.2.$Notebook access control">Notebook access control</li>
+                            <li class="plan-feature" data-reactid=".1.1.1.1.2.$Role-based access control">Role-based access control</li>
+                            <li class="plan-feature" data-reactid=".1.1.1.1.2.$GitHub integration">GitHub integration</li>
+                            <li class="plan-feature" data-reactid=".1.1.1.1.2.$Email support">Email support</li>
+                        </ul>
+                    </div>
+                    <div class="plan-footer" data-reactid=".1.1.1.2">
+                        <div class="buttons" data-reactid=".1.1.1.2.1">
+                            <div class="plan-upgrade-btn" data-name="contact-us-button" data-reactid=".1.1.1.2.1.0"><a class="flat-btn plan-box-btn " data-reactid=".1.1.1.2.1.0.0">Contact us</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 nopadding">
+                <div class="plan-box  tier-enterprise" data-name="plan-tier-enterprise" data-reactid=".1.1.2">
+                <div class="plan-title" data-reactid=".1.1.2.0">Enterprise</div>
+                <div class="plan-details" data-reactid=".1.1.2.1">
+                    <div class="users" data-reactid=".1.1.2.1.0">Custom</div>
+                    <div class="includes" data-reactid=".1.1.2.1.1"><span data-reactid=".1.1.2.1.1.0">Includes all in </span><strong data-reactid=".1.1.2.1.1.1">Professional</strong><span data-reactid=".1.1.2.1.1.2">, and:</span></div>
+                    <ul class="features" data-reactid=".1.1.2.1.2">
+                        <li class="plan-feature" data-reactid=".1.1.2.1.2.$Premium support">Premium support</li>
+                        <li class="plan-feature" data-reactid=".1.1.2.1.2.$Operational SLAs">Operational SLAs</li>
+                        <li class="plan-feature" data-reactid=".1.1.2.1.2.$Jumpstart workshops">Jumpstart workshops</li>
+                        <li class="plan-feature" data-reactid=".1.1.2.1.2.$Training credits">Training credits</li>
+                    </ul>
+                </div>
+                <div class="plan-footer" data-reactid=".1.1.2.2">
+                    <div class="buttons" data-reactid=".1.1.2.2.1">
+                        <div class="plan-upgrade-btn" data-name="contact-us-button" data-reactid=".1.1.2.2.1.0"><a class="flat-btn plan-box-btn " data-reactid=".1.1.2.2.1.0.0">Contact us</a></div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
